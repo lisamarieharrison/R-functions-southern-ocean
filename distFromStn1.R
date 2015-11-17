@@ -1,7 +1,7 @@
 #distance of each station from station 1 in x and y directions
 
-source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/functions_southern_ocean/gcdHF.R")
-source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/functions_southern_ocean/deg2rad.R")
+source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/R-functions-southern-ocean/gcdHF.R")
+source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/R-functions-southern-ocean/deg2rad.R")
 
 distFromStn1 <- function(lat, long) {
   
