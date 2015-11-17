@@ -2,14 +2,14 @@
 #author: Lisa-Marie Harrison
 #date: 3/8/2015
 
-calcRsquared <- function (obj, rand) {
+calcRsquared <- function (obj, rand, data) {
   
   #obj: asreml model object
   #rand: vector of strings containing names of random effects (splines are considered fixed so do not include)
   #return: a list containing the marginal and conditional R-squared values
   
   #Get design matrix of fixed effects from model
-  Fmat <- model.matrix(eval(obj$fixed.formula)[-2], glm.spl)
+  Fmat <- model.matrix(eval(obj$fixed.formula)[-2], data)
   
   #Get variance of fixed effects by multiplying coefficients by design matrix
   VarF <- sum(var(as.vector(rev(obj$coefficients$fixed) %*% t(Fmat))), summary(obj)$varcomp[grep("spl", rownames(summary(obj)$varcomp)), 2])
