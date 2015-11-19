@@ -2,12 +2,14 @@
 #author: Lisa-Marie Harrison
 #date: 19/11/2015
 
-rocCurve <- function(model, s, print = FALSE) {
+rocCurve <- function(model, s, data, print = FALSE) {
   
   #model= binomial glm model from glmer
   #s = threshold (usually 0.5)
+  #data = data set with column named 'pa' for presence absence data
   #print= boolean for printing table of observed vs predicted
   
+  Y <- na.omit(data)$pa
   S <- predict(model, type = "response")
   Ps <- (S > s)*1
   FP <- sum((Ps == 1)*(Y == 0))/sum(Y == 0)
