@@ -9,7 +9,7 @@ rocCurve <- function(model, s, data, print = FALSE) {
   #data = data set with column named 'pa' for presence absence data
   #print= boolean for printing table of observed vs predicted
   
-  Y <- na.omit(data)$pa
+  Y <- na.omit(data)
   S <- predict(model, type = "response")
   Ps <- (S > s)*1
   FP <- sum((Ps == 1)*(Y == 0))/sum(Y == 0)
