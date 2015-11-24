@@ -1,7 +1,14 @@
 #distance of each station from station 1 in x and y directions
 
-source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/R-functions-southern-ocean/gcdHF.R")
-source("C:/Users/Lisa/Documents/phd/southern ocean/Mixed models/R code/R-functions-southern-ocean/deg2rad.R")
+
+if (Sys.info()[4] == "SCI-6246") {
+  setwd(dir = "C:/Users/43439535/Documents/Lisa/phd/Mixed models")
+} else {
+  setwd(dir = "C:/Users/Lisa/Documents/phd/southern ocean/Mixed models")
+}
+
+source("R code/R-functions-southern-ocean/gcdHF.R")
+source("R code/R-functions-southern-ocean/deg2rad.R")
 
 distFromStn1 <- function(lat, long) {
   
