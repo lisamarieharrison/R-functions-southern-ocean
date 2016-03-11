@@ -1,4 +1,5 @@
 #function to print observed vs fitted presence/absence and sensitivity/specificity
+#handles models of glass glm, hurdle, lm and ggwrm
 #author: Lisa-Marie Harrison
 #date: 11/03/2016
 
@@ -14,6 +15,11 @@ calcPA <- function (model, reference, data) {
     ilogit <- function(x) 1/(1+exp(-x))
     presence_absence <- round(ilogit(data$krill * model$coefficients$zero[1]))
     
+    
+  } else if (class(model)[1] == "ggwrm") {
+    
+    presence_absence <- round(getFittedGWR(model, data))
+    presence_absence[presence_absence > 0] <- 1 
     
   } else {
     
