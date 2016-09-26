@@ -1,6 +1,6 @@
 #calculates glm.spl for fluoro data for sourcing
 
-setUpFluoro <- function(dat) {
+setUpFluoro <- function(dat, scale = TRUE) {
   
   #dat = raw data frame of ctd observations
   #returns glm.spl data frame ready for asreml analysis
@@ -68,14 +68,17 @@ setUpFluoro <- function(dat) {
   glm.spl <- glm.spl[order(glm.spl$z, glm.spl$x, glm.spl$y), ] #sort by order of rcov structure
   glm.spl$l.obs[glm.spl$l.obs == -Inf] <- NA
   
-  #centre and scale covariates to mean = 0 and sd = 1
-  #this is required if using na.method = "include" since this sets the missing values to 0
-  glm.spl$temp <- scale(glm.spl$temp)
-  glm.spl$par  <- scale(glm.spl$par)
-  glm.spl$sal  <- scale(glm.spl$sal)
-  glm.spl$oxy  <- scale(glm.spl$oxy)
-  glm.spl$ice  <- scale(glm.spl$ice)
-  glm.spl$oxy  <- scale(glm.spl$oxy)
+  if (scale) {
+    
+    #centre and scale covariates to mean = 0 and sd = 1
+    #this is required if using na.method = "include" since this sets the missing values to 0
+    glm.spl$temp <- scale(glm.spl$temp)
+    glm.spl$par  <- scale(glm.spl$par)
+    glm.spl$sal  <- scale(glm.spl$sal)
+    glm.spl$oxy  <- scale(glm.spl$oxy)
+    glm.spl$ice  <- scale(glm.spl$ice)
+    glm.spl$oxy  <- scale(glm.spl$oxy)
+  }
   
   return(glm.spl)
   
