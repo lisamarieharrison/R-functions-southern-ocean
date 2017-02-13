@@ -60,8 +60,8 @@ setUpFluoro <- function(dat, scale = TRUE) {
   
   
   #data frame
-  glm.spl <- data.frame(dat$l.fluoro, dat$depth, as.factor(dat$stn), rep(x, 1, each = length(unique(dat$depth))), rep(y, 1, each = length(unique(dat$depth))), dat$temp, dat$par, dat$sal, dat$oxygen, dat$ice, as.factor(dat$wm), dat$fluoro)
-  names(glm.spl) <- c("l.obs", "z", "stn", "x", "y", "temp", "par", "sal", "oxy", "ice", "wm", "obs")
+  glm.spl <- data.frame(dat$l.fluoro, dat$depth, as.factor(dat$stn), rep(x, 1, each = length(unique(dat$depth))), rep(y, 1, each = length(unique(dat$depth))), dat$temp, dat$par, dat$sal, dat$oxygen, dat$ice, as.factor(dat$wm), dat$fluoro, dat$long, dat$lat)
+  names(glm.spl) <- c("l.obs", "z", "stn", "x", "y", "temp", "par", "sal", "oxy", "ice", "wm", "obs", "long", "lat")
   glm.spl$z.fact <- as.factor(as.integer(glm.spl$z))
   glm.spl$x.fact <- as.factor(glm.spl$x)
   glm.spl$y.fact <- as.factor(glm.spl$y)
